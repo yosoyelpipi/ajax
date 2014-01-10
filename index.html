@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Mobile Web App</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+<meta charset="utf-8">
+
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<link href="jquery-mobile/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css"/>
+<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    navigator.splashscreen.hide();
+}
+
+ // Muestra un cuadro de dialogo personalizado.
+    //
+    function showAlert() {
+        navigator.notification.alert(
+        'Eres el mas ganador!',     // mensaje (message)
+        'Game Over',            // titulo (title)
+        'Cerrar'                // nombre del botón (buttonName)
+        );
+    }
+
+    // Reproduce tres beeps
+    //
+    function playBeep() {
+        navigator.notification.beep(1);
+    }
+
+    // Vibra dos segundos
+    //
+    function vibrate() {
+        navigator.notification.vibrate(2000);
+    }
+	</script>
+	
+	<script>
+	$(document).ready(function(e) {
+		
+		$("#traer").click(function() {
+			$("#datos").load("http://www.yappino.com/android/test.php");
+	
+		});
+	});
+
+</script>
+<style>
+.parrafoAjax {
+	font-family:Arial, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color: #333;
+}
+</style>
+
+
+</head> 
+<body> 
+
+<div id="page" data-role="page" data-theme="e">
+	<div data-role="header" data-theme="a">
+		<h1>Inicio</h1>
+	</div>
+	<div data-role="content">	
+		<ul data-role="listview" data-theme="b">
+			<li><a href="#page2">Página dos</a></li>
+            <li><a href="#page3">Página tres</a></li>
+			<li><a href="#page4">Página cuatro</a></li>
+		</ul>
+        			
+	</div>
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h4>Labbytes ®2013</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page2">
+	<div data-role="header" data-theme="c">
+		<h1>Page Two</h1>
+	</div>
+	<div data-role="content">	
+		<p><a href="#" onclick="showAlert(); return false;">Mostrar cuadro de dialogo</a></p>
+    <p><a href="#" onclick="playBeep(); return false;">Reproducir beep</a></p>
+    <p><a href="#" onclick="vibrate(); return false;">Vibrar</a></p>	
+	</div>
+	<div data-role="footer">
+		<h4>Labbytes ®2013</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page3">
+	<div data-role="header">
+		<h1>Page Three</h1>
+	</div>
+	<div data-role="content">	
+		<input type="button" id="traer" value="Ver Saldo">
+        <div id="datos" class="parrafoAjax"></div>	
+	</div>
+	<div data-role="footer">
+		<h4>Labbytes ®2013</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>Page Four</h1>
+	</div>
+	<div data-role="content">	
+		Content		
+	</div>
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div>
+</div>
+
+</body>
+</html>
